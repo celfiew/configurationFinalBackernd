@@ -1,9 +1,9 @@
 server:
-  port: 8002
+  port: 8003
 
 eureka:
   instance:
-    hostname: catalog-service
+    hostname: serie-service
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
@@ -11,15 +11,14 @@ eureka:
 
 spring:
   application:
-    name: catalog-service
-  spring:
+    name: serie-service
+  mongodb:
+    embedded:
+      version: 4.0.2
+  data:
     mongodb:
-      embedded:
-        version: 4.0.2
-    data:
-      mongodb:
-        database: test
-        port: 27018
+      database: test
+      port: 27018
   rabbitmq:
     username: guest
     password: guest
@@ -31,9 +30,9 @@ spring:
 
 queue:
   movie:
-    name: MovieQueue
+    name: SerieQueue
 
-message: hello catalog
+message: hello world
 
 management:
   endpoints:
@@ -51,7 +50,7 @@ info:
   app:
     name: ${spring.application.name}
     version: 1.0.0
-    description: Catalog Microservice
+    description: Serie Microservice
   svc:
     intanceid: ${eureka.instance.instance-id}
     port: ${server.port}
