@@ -38,15 +38,15 @@ eureka:
     base-url: http://zipkin:9411
     enabled: true
 
-  rabbitmq:
-    username: guest
-    password: guest
-    host: localhost
-    port: 5672
-
-  queue:  
-    movie:
-      name: MovieQueue
+#  rabbitmq:
+#    username: guest
+#    password: guest
+#    host: localhost
+#    port: 5672
+#
+#  queue:
+#    movie:
+#      name: MovieQueue
 
 message: hello from movie-service
 
@@ -66,7 +66,7 @@ info:
   app:
     name: ${spring.application.name}
     version: 1.0.0
-    description: microservicio registraTion
+    description: microservicio registration
   svc:
     #    intanceid: ${eureka.instance.instance-id}
     port: ${server.port}
