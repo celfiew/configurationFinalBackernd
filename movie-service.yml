@@ -38,6 +38,16 @@ eureka:
     base-url: http://zipkin:9411
     enabled: true
 
+  rabbitmq:
+    username: guest
+    password: guest
+    host: rabbitmq3
+    port: 5672
+
+  queue:
+    movie:
+      name: MovieQueue
+
 message: hello from movie-service
 
 management:
