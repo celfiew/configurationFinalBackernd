@@ -41,10 +41,10 @@ eureka:
   rabbitmq:
     username: guest
     password: guest
-    host: rabbitmq3
+    host: localhost
     port: 5672
 
-  queue:
+  queue:  
     movie:
       name: MovieQueue
 
@@ -54,7 +54,22 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: info
+  info:
+    env:
+      enabled: true
+  endpoint:
+    info:
+      enabled: true
+
+info:
+  app:
+    name: ${spring.application.name}
+    version: 1.0.0
+    description: microservicio registraTion
+  svc:
+    #    intanceid: ${eureka.instance.instance-id}
+    port: ${server.port}
 #server:
 #  port: 8001
 #
