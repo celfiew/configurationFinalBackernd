@@ -34,6 +34,10 @@ eureka:
       enabled: true
       path: /h2-console
 
+  zipkin:
+    base-url: http://zipkin:9411
+    enabled: true
+
 message: hello from movie-service
 
 management:
