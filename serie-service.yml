@@ -1,38 +1,54 @@
 server:
-  port: 8003
+  port: ${PORT:${SERVER_PORT:0}}
 
-eureka:
-  instance:
-    hostname: serie-service
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-  client:
-    service-url:
-      defaultZone: http://eurekaserver:8761/eureka
+idRandom: ${random.value}
 
 spring:
   application:
     name: serie-service
-  mongodb:
-    embedded:
-      version: 4.0.2
-  data:
-    mongodb:
-      database: test
-      port: 27018
-  rabbitmq:
-    username: guest
-    password: guest
-    host: rabbitmq3
-    port: 5672
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: sa
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
   zipkin:
     base-url: http://zipkin:9411
     enabled: true
 
-queue:
-  movie:
-    name: SerieQueue
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
 
-message: hello world
+queue:
+  serie:
+    name: serieQueue
+
+message: hello from serie-service
 
 management:
   endpoints:
@@ -50,7 +66,7 @@ info:
   app:
     name: ${spring.application.name}
     version: 1.0.0
-    description: Serie Microservice
+    description: microservicio registration
   svc:
-    intanceid: ${eureka.instance.instance-id}
+    #    intanceid: ${eureka.instance.instance-id}
     port: ${server.port}
