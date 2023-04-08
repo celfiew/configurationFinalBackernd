@@ -44,9 +44,9 @@ eureka:
     host: localhost
     port: 5672
 
-  queue:
-    movie:
-      name: movieQueue
+queue:
+  movie:
+    name: movieQueue
 
 message: hello from movie-service
 
