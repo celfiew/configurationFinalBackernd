@@ -14,14 +14,13 @@ eureka:
 spring:
   application:
     name: catalog-service
-  spring:
+  mongodb:
+    embedded:
+      version: 4.0.2
+  data:
     mongodb:
-      embedded:
-        version: 4.0.2
-    data:
-      mongodb:
-        database: test
-        port: 27031
+      database: test
+      port: 27031
   rabbitmq:
     username: guest
     password: guest
