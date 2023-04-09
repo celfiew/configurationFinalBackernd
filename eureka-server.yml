@@ -1,36 +1,34 @@
-#server:
-#  port: 8761
-#
-#spring:
-#  application:
-#    name: eureka-server
-#  zipkin:
-#    base-url: http://zipkin:9411
-#    enabled: true
-#
-#eureka:
-##  instance:
-##    hostname: localhost
-##    preferIpAddress: true
-#
-#  client:
-#    fetch-registry: false
-#    register-with-eureka: false
-#
-    server:
-      port: ${PORT:8761}
+server:
+  port: ${PORT:8761}
 
-    spring:
-      application:
-        name: eureka-server
-      zipkin:
-        base-url: http://zipkin:9411
-        enabled: true
-    eureka:
-      instance:
-        hostname: localhost
-      client:
-        registerWithEureka: false
-        fetchRegistry: false
-        serviceUrl:
-          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  application:
+    name: eureka-server
+  zipkin:
+    base-url: http://zipkin:9411
+    enabled: true
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#    server:
+#      port: ${PORT:8761}
+#
+#    spring:
+#      application:
+#        name: eureka-server
+#      zipkin:
+#        base-url: http://zipkin:9411
+#        enabled: true
+#    eureka:
+#      instance:
+#        hostname: localhost
+#      client:
+#        registerWithEureka: false
+#        fetchRegistry: false
+#        serviceUrl:
+#          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

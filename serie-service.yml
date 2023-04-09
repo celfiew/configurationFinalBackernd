@@ -27,7 +27,7 @@ spring:
 
 queue:
   serie:
-    name: serieQueue
+    name: SerieQueue
 
 message: hello from serie-service
 
@@ -61,3 +61,66 @@ info:
   svc:
     #    intanceid: ${eureka.instance.instance-id}
     port: ${server.port}
+#server:
+#  port: ${PORT:${SERVER_PORT:0}}
+#
+#idRandom: ${random.value}
+#
+#spring:
+#  application:
+#    name: serie-service
+#
+#  mongodb:
+#    embedded:
+#      version: 4.0.2
+#  data:
+#    mongodb:
+#      database: test
+#      port: 27017
+#
+#  zipkin:
+#    base-url: http://zipkin:9411
+#    enabled: true
+#
+#  rabbitmq:
+#    username: guest
+#    password: guest
+#    host: localhost
+#    port: 5672
+#
+#queue:
+#  serie:
+#    name: serieQueue
+#
+#message: hello from serie-service
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: info
+#  info:
+#    env:
+#      enabled: true
+#  endpoint:
+#    info:
+#      enabled: true
+#
+#info:
+#  app:
+#    name: ${spring.application.name}
+#    version: 1.0.0
+#    description: microservicio registration
+#  svc:
+#    #    intanceid: ${eureka.instance.instance-id}
+#    port: ${server.port}
