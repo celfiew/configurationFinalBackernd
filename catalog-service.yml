@@ -19,12 +19,13 @@ spring:
     data:
       mongodb:
         database: test
-        port: 27018
+        port: 27031
   rabbitmq:
     username: guest
     password: guest
     host: rabbitmq3
     port: 5672
+
   zipkin:
     base-url: http://zipkin:9411
     enabled: true
@@ -32,6 +33,8 @@ spring:
 queue:
   movie:
     name: MovieQueue
+  serie:
+    name: SerieQueue
 
 message: hello catalog
 
