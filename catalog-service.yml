@@ -27,6 +27,7 @@ spring:
     host: localhost
     port: 5672
 
+
 queue:
   movie:
     name: MovieQueue
@@ -39,13 +40,34 @@ management:
   endpoints:
     web:
       exposure:
-        include: info
-  info:
-    env:
+        include: circuitbreakers,circuitbreakerevents,health,info,ratelimiters,metrics
+  health:
+    circuitbreakers:
       enabled: true
   endpoint:
-    info:
-      enabled: true
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      serie:
+        allowHealthIndicatorToFail: false
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 15000
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  retry:
+    instances:
+      serie:
+        maxAttempts: 3
+        waitDuration: 1000
+        retryExceptions:
+          - feign.FeignException$InternalServerError
+
 
 info:
   app:
@@ -55,6 +77,8 @@ info:
   svc:
     intanceid: ${eureka.instance.instance-id}
     port: ${server.port}
+
+
 
 
 #server:

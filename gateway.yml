@@ -38,6 +38,16 @@ spring:
               args:
                 name: catalogService
                 fallbackUri: forward:/fallback/catalog
+        - id: aplicativo_serie-service
+          uri: lb://serie-service
+          predicates:
+            - Path=/api/serie/**
+          filters:
+           - StripPrefix=2
+           - name: CircuitBreaker
+             args:
+               name: serieService
+               fallbackUri: forward:/fallback/series
   zipkin:
     base-url: http://zipkin:9411
     enabled: true
