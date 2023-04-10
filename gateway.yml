@@ -18,36 +18,20 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: aplicativo_movie-service
+        - id: msmovie
           uri: lb://movie-service
           predicates:
             - Path=/api/movies/**
-          filters:
-            - StripPrefix=2
-            - name: CircuitBreaker
-              args:
-                name: moviesService
-                fallbackUri: forward:/fallback/movies
-        - id: aplicativo_catalog-service
+            -
+        - id: mscatalog
           uri: lb://catalog-service
           predicates:
             - Path=/api/catalog/**
-          filters:
-            - StripPrefix=2
-            - name: CircuitBreaker
-              args:
-                name: catalogService
-                fallbackUri: forward:/fallback/catalog
-        - id: aplicativo_serie-service
+
+        - id: msserie
           uri: lb://serie-service
           predicates:
             - Path=/api/serie/**
-          filters:
-           - StripPrefix=2
-           - name: CircuitBreaker
-             args:
-               name: serieService
-               fallbackUri: forward:/fallback/series
   zipkin:
     base-url: http://zipkin:9411
     enabled: true
