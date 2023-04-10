@@ -24,12 +24,10 @@ spring:
           uri: lb://movie-service
           predicates:
             - Path=/movies/**
-            -
+
   zipkin:
     base-url: http://zipkin:9411
     enabled: true
-
-
 
 
 info:
@@ -50,6 +48,7 @@ eureka:
       web:
         exposure:
           include: gateway
+
 #server:
 #  port: 8080
 #
